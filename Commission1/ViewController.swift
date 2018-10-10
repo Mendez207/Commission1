@@ -10,24 +10,25 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var commisionPayTextField: UITextField!
+    @IBOutlet weak var totalPayLabel: UILabel!
+    let basePay:Int = (500)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
     
     @IBAction func calculateTapped(_ sender: UIButton) {
-        //   getInput()
+        let commisionPay = getInput()
+        let totalPay = commisionPay + Double(basePay)
+        totalPayLabel.text = "Total Pay = $\(totalPay)"
     }
     func getInput() -> Double
     {
         if let commisionPay = commisionPayTextField.text, let pay = Double(commisionPay) {
-            print("Has data and can be turned into an integer")
+            return pay
         } else {
-            print("No data or can't be turned into an integer")
+           return 0
         }
-        return 13.97
     }
 }
 
